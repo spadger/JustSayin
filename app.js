@@ -1,8 +1,24 @@
 var http = require('http');
+var url = require('url');
+var express = require('express');
+
+var app = express();
 var port = process.env.PORT || 3000;
 var host = process.env.HOST || 'localhost';
-http.createServer(function (req, res) {
-    res.writeHead(200, {'Content-Type': 'text/plain'});
-    res.end('JustSaying enters the world... \n');
-}).listen(port);
-console.log('Server running at ' + host + ':' + port);
+
+var github = require('./github');
+
+app.get('/', function (req,res){
+    var service = req.query.service;
+
+    if (service != 'undefined'){
+        switch(service){
+            case "github":
+                github.messageHipchat(req);
+        }
+    }
+
+    res.end('done')
+})
+
+app.listen(port);

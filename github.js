@@ -6,9 +6,7 @@ function messageHipchat(request,response){
     var sender = 'JustSayin::Github';
 
     console.log('REQUEST URL: ' + request.url);
-    console.log('REQUEST BODY: ' + request.body);
-
-    response.end(JSON.stringify(request.body));
+    console.log('REQUEST BODY: ' + JSON.stringify(request.body));
 
 //    var event = req.headers['x-github-event'];
 //    var who = request.body.pusher.name;

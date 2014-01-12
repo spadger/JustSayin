@@ -1,11 +1,14 @@
 var config = require('./config');
 var HipChatClient = require('node-hipchat');
 
-function messageHipchat(request){
+function messageHipchat(request,response){
     var hipchat = new HipChatClient(config.hipchatApiKey);
-    var sender = 'JustSayin/Github';
+    var sender = 'JustSayin::Github';
 
-    console.log(request);
+    console.log('REQUEST URL: ' + request.url);
+    console.log('REQUEST BODY: ' + request.body);
+
+    response.end(JSON.stringify(request.body));
 
 //    var event = req.headers['x-github-event'];
 //    var who = request.body.pusher.name;

@@ -14,9 +14,15 @@ app.post('/', function (req,res){
 
     if (service != 'undefined'){
         switch(service){
-            case "github":
+            case 'github':
                 github.messageHipchat(req,res);
+            case 'teamcity':
+
+            case 'jira':
         }
+    }
+    else{
+        console.log('Service not defined.')
     }
 
     res.end('done')

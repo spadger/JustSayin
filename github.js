@@ -32,6 +32,7 @@ function messageHipchat(request,response){
 
 function parseGithubJsonIntoHipChatMessageHtml(body){
     var github = "https://github.com/";
+    console.log(body);
     var pusherUsername = body.payload.pusher.name;
     var branch = body.payload.ref.toString().replace('refs/heads/','');
     var repoUrl = body.payload.repository.url;

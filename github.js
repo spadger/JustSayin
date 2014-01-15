@@ -8,7 +8,7 @@ function messageHipchat(request,response){
     console.log('REQUEST URL: ' + request.url);
     console.log('REQUEST BODY: ' + JSON.stringify(request.body));
 
-    var messageHtml = parseGithubJsonIntoHipChatHtmlMessage(JSON.stringify(request.body));
+    var messageHtml = parseGithubJsonIntoHipChatMessageHtml(JSON.stringify(request.body));
     var escapedMessageHtml = escape(messageHtml);
 
     hipchat.postMessage(

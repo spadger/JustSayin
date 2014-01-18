@@ -25,11 +25,10 @@ app.post('/', function (req,res){
         console.log('service queryparam not defined.')
     }
 
-    res.end('JustSayin is a messaging bot used by JustGiving.com to route messages between systems and internal chat. It cannot be used from a browser.')
 });
 
 app.get('/',function(req,res){
-    res.end('done get');
+    res.end('JustSayin is a messaging bot used by JustGiving.com to route messages between systems and internal chat. It cannot be used from a browser.')
 });
 
 app.listen(port);

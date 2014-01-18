@@ -12,7 +12,7 @@ describe('JustSayin',function(){
             var sampleJSON = JSON.parse(fs.readFileSync('github_sample.json'));
             var sampleHTML = fs.readFileSync('githubtohipchat.html').toString();
 
-            var result = github.parseGithubJsonIntoHipChatMessageHtml(sampleJSON);
+            var result = github.parseGithubJsonIntoHipChatMessageHtml(sampleJSON.payload);
             result.should.eql(sampleHTML);
 
             done();

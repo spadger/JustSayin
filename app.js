@@ -1,13 +1,13 @@
 var http = require('http');
 var url = require('url');
 var express = require('express');
+var github = require('./github');
 
-var app = express();
-app.use(express.bodyParser());
 var port = process.env.PORT || 3000;
 var host = process.env.HOST || 'localhost';
 
-var github = require('./github');
+var app = express();
+app.use(express.bodyParser());
 
 app.post('/', function (req,res){
     var service = req.query.service;
@@ -15,17 +15,17 @@ app.post('/', function (req,res){
     if (service != 'undefined'){
         switch(service){
             case 'github':
-                github.messageHipchat(req,res);
+                github.messageHipchat(req);
             case 'teamcity':
 
             case 'jira':
         }
     }
     else{
-        console.log('Service not defined.')
+        console.log('service queryparam not defined.')
     }
 
-    res.end('done')
+    res.end('JustSayin is a messaging bot used by JustGiving.com to route messages between systems and internal chat. It cannot be used from a browser.')
 });
 
 app.get('/',function(req,res){

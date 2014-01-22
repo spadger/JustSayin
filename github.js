@@ -13,11 +13,8 @@ function messageHipchat(request){
     hipchat.postMessage(
         {
             room: 379365, // System Announcements room, just testing for now
-            from: ":JustSayin/GH:",
-            notify: false,
-            color: 'yellow',
-            message: messageHtml,
-            message_format: 'html'
+            from: "JustSayin/GH",
+            message: messageHtml
         }
         ,function(resp, err){
             console.log(resp, err);

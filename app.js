@@ -3,6 +3,7 @@ var url = require('url');
 var express = require('express');
 var github = require('./github');
 var teamcity = require('./teamcity');
+var jira = require('./jira');
 
 var port = process.env.PORT || 3000;
 var host = process.env.HOST || 'localhost';
@@ -20,6 +21,7 @@ app.post('/', function (req,res){
             case 'teamcity':
                 teamcity.messageHipchat(req);
             case 'jira':
+                jira.messageHipchat(req);
         }
     }
     else{

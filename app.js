@@ -15,7 +15,7 @@ app.post('/', function (req,res){
     var service = req.query.service;
 
     if (service != 'undefined'){
-        switch(service){
+        switch(service.toLowerCase()){
             case 'github':
                 github.messageHipchat(req);
             case 'teamcity':

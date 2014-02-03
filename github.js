@@ -4,15 +4,19 @@ var HipChatClient = require('node-hipchat');
 function messageHipchat(request){
     var hipchat = new HipChatClient(config.hipchatApiKey);
 
-//    console.log('REQUEST URL: ' + request.url);
-//    console.log('REQUEST BODY: ' + JSON.stringify(request.body));
-//    console.log('REQUEST HEADERS: ' + JSON.stringify(request.headers));
+    var payload = JSON.parse(request.body.payload);
+    var branchName = payload.ref.replace('refs/heads/','');
+    var roomId = 379365; //default of System Announcements room
+    config.teams.forEach(function (team){
+        if (branchName.toLowerCase().substring(0,team.key.length) === team.key)
+            roomId = team.roomId;
+    })
 
     var messageHtml = parseGithubJsonIntoHipChatMessageHtml(JSON.parse(request.body.payload));
 
     hipchat.postMessage(
         {
-            room: 379365, // System Announcements room, just testing for now
+            room: roomId,
             from: "JustSayin/GH",
             message: messageHtml
         }

@@ -28,6 +28,7 @@ app.post('/', function (req,res){
         console.log('service queryparam not defined.')
     }
 
+    res.end('done')
 });
 
 app.get('/',function(req,res){

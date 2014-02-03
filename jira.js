@@ -4,11 +4,17 @@ var HipChatClient = require('node-hipchat');
 function messageHipchat(req){
     var hipchat = new HipChatClient(config.hipchatApiKey);
 
+    var roomId = 379365; //default of System Announcements room
+    config.teams.forEach(function (team){
+        if (req.body.issue.key.toLowerCase().substring(0,team.key.length) === team.key)
+            roomId = team.roomId;
+    })
+
     var htmlMessage = parseJiraPostBodyToHtmlMessage(req.body);
 
     hipchat.postMessage(
         {
-            room: 379365, // System Announcements room, just testing for now
+            room: roomId,
             from: "JustSayin/JR",
             message: htmlMessage
         }

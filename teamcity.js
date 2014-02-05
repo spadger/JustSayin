@@ -7,7 +7,7 @@ function messageHipchat(req){
 
     hipchat.postMessage(
         {
-            room: 379365, // System Announcements room, just testing for now
+            room: 144926,
             from: "JustSayin/TC",
             message: message
         }

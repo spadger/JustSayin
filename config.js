@@ -12,7 +12,8 @@ config.teams = [
     {team: 'Thundercats', roomId: 173396, key: 'jgc'},
     {team: 'Platform', roomId:150454, key:'inf'},
     {team: 'JGTech', roomId:144926, key:'integration'},
-    {team: 'JGTech', roomId:144926, key:'rc'}
+    {team: 'JGTech', roomId:144926, key:'rc'},
+    {team: 'JG.Mobile', roomId:378395 , key:'master', repo: 'JG.Mobile'}
 ]
 
 module.exports = config;

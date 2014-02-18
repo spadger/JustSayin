@@ -6,13 +6,23 @@ function messageHipchat(request){
 
     var payload = JSON.parse(request.body.payload);
     var branchName = payload.ref.replace('refs/heads/','');
+    var repoName = payload.repository.name;
     var roomId = 379365; //default of System Announcements room
     config.teams.forEach(function (team){
         if (branchName.toLowerCase().substring(0,team.key.length) === team.key)
-            roomId = team.roomId;
+            if (team.key == 'master')
+            {
+                if (team.repo == repoName){
+                    roomId = team.roomId;
+                }
+            }
+            else
+            {
+                roomId = team.roomId;
+            }
     })
 
-    var messageHtml = parseGithubJsonIntoHipChatMessageHtml(JSON.parse(request.body.payload));
+    var messageHtml = parseGithubJsonIntoHipChatMessageHtml(payload);
 
     hipchat.postMessage(
         {

@@ -18,9 +18,12 @@ app.post('/', function (req,res){
         switch(service.toLowerCase()){
             case 'github':
                 github.messageHipchat(req);
+                break;
             case 'teamcity':
                 teamcity.messageHipchat(req);
+                break;
             case 'jira':
+                break;
                 jira.messageHipchat(req);
         }
     }

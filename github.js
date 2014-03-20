@@ -4,7 +4,7 @@ var HipChatClient = require('node-hipchat');
 function messageHipchat(request){
     var hipchat = new HipChatClient(config.hipchatApiKey);
 
-    var payload = JSON.parse(request.body.payload);
+    var payload = JSON.parse(request.body);
     var branchName = payload.ref.replace('refs/heads/','');
     var repoName = payload.repository.name;
     var roomId = 379365; //default of System Announcements room

@@ -11,10 +11,10 @@ describe('JustSayin',function(){
     describe('github',function(){
 
         it('should parse a github post body into a hipchat html message',function(done){
-            var sampleJSON = JSON.parse(fs.readFileSync('github_sample.json'));
-            var sampleHTML = fs.readFileSync('githubtohipchat.html').toString();
+            var sampleJSON = JSON.parse(fs.readFileSync('Samples/github_sample.json'));
+            var sampleHTML = fs.readFileSync('Samples/githubtohipchat.html').toString();
 
-            var result = github.parseGithubJsonIntoHipChatMessageHtml(sampleJSON.payload);
+            var result = github.parseGithubJsonIntoHipChatMessageHtml(sampleJSON);
             result.should.eql(sampleHTML);
 
             done();
@@ -25,8 +25,8 @@ describe('JustSayin',function(){
     describe('jira',function(){
 
         it('should parse a jira post body into a status update html message', function(done){
-            var sampleJSON = JSON.parse(fs.readFileSync('jira_sample.json'));
-            var sampleHTML = fs.readFileSync('jiratohipchat.html').toString();
+            var sampleJSON = JSON.parse(fs.readFileSync('Samples/jira_sample.json'));
+            var sampleHTML = fs.readFileSync('Samples/jiratohipchat.html').toString();
 
             var result = jira.parseJiraPostBodyToHtmlMessage(sampleJSON);
             result.should.eql(sampleHTML);
